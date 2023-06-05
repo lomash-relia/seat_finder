@@ -51,6 +51,7 @@ class _SeatTileState extends State<SeatTile> {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
+          color: isSelected ? Colors.blue : Colors.white,
           border: Border.all(
             width: 3,
           ),
@@ -63,17 +64,17 @@ class _SeatTileState extends State<SeatTile> {
               (widget.seatNo).toString(),
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: isSelected ? Colors.red : Colors.blue[700],
+                color: isSelected ? Colors.white : Colors.blue,
                 fontWeight: FontWeight.bold,
-                fontSize: 21,
+                fontSize: 19,
               ),
             ),
             Text(
               seatType,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: isSelected ? Colors.red : Colors.blue[700],
-                fontSize: 13,
+                color: isSelected ? Colors.white : Colors.blue,
+                fontSize: 11,
               ),
             ),
           ],

@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Seat Finder',
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: const ColorScheme.light(primary: Colors.redAccent),
+        colorScheme: const ColorScheme.light(primary: Colors.blueAccent),
       ),
-      home: const HomeScreen(seatCount: 20),
+      home: const HomeScreen(seatCount: 72),
     );
   }
 }

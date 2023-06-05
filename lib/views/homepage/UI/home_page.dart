@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Seat Finder'),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: BlocBuilder<HomeBloc, HomeState>(
           bloc: homeBloc,
           buildWhen: (previous, current) => current is! HomeActionState,
@@ -55,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller: seatInputController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          hintText: 'Enter Seat Number',
-                          label: Icon(Icons.search),
+                          hintText: 'Enter Seat Number...',
+                          border: OutlineInputBorder(),
                         ),
                       ),
                       trailing: ElevatedButton(
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             seatInputController.clear();
                           }
                         },
-                        child: const Text('Search'),
+                        child: const Text('Find'),
                       ),
                     ),
                     const SizedBox(
@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                       child: GridView.count(
-                        crossAxisCount: 3,
+                        crossAxisCount: 4,
                         children: List.generate(widget.seatCount, (index) {
                           devtools.log('from home list view $index --');
                           return SeatTile(
