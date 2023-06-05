@@ -56,6 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 return const Center(child: CircularProgressIndicator());
               case HomeLoadedState:
                 final successState = state as HomeLoadedState;
+                final widthValue = MediaQuery.of(context).size.width;
+                int count = 4;
+                if (widthValue > 450) {
+                  count = 6;
+                  if (widthValue > 800) {
+                    count = 8;
+                  }
+                }
                 return Column(
                   children: [
                     ListTile(
@@ -83,12 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: const Text('Find'),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     Expanded(
                       child: GridView.count(
-                        crossAxisCount: 4,
+                        crossAxisCount: count,
                         children: List.generate(widget.seatCount, (index) {
                           devtools.log('from home list view $index --');
                           return SeatTile(

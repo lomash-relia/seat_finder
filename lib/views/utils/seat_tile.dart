@@ -18,16 +18,18 @@ class _SeatTileState extends State<SeatTile> {
   late String seatType;
 
   void calculateSeatType(int seatNo) {
-    if (seatNo % 8 == 7) {
-      seatType = 'Side Lower';
-    } else if (seatNo % 8 == 0) {
-      seatType = 'Side Upper';
-    } else if (seatNo % 4 == 1 || seatNo % 4 == 0) {
+    int seatTypeNumber = seatNo % 8;
+
+    if (seatTypeNumber == 1 || seatTypeNumber == 4) {
       seatType = 'Lower';
-    } else if (seatNo % 2 == 0) {
+    } else if (seatTypeNumber == 2 || seatTypeNumber == 5) {
       seatType = 'Middle';
-    } else if (seatNo % 4 == 3 || seatNo % 4 == 2) {
+    } else if (seatTypeNumber == 3 || seatTypeNumber == 6) {
       seatType = 'Upper';
+    } else if (seatTypeNumber == 7) {
+      seatType = 'Side Lower';
+    } else if (seatTypeNumber == 0) {
+      seatType = 'Side Upper';
     }
   }
 
