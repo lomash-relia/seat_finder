@@ -48,10 +48,12 @@ class _SeatTileState extends State<SeatTile> {
       });
     }
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(width: 2),
+          border: Border.all(
+            width: 3,
+          ),
           borderRadius: BorderRadius.circular(13),
         ),
         child: Column(

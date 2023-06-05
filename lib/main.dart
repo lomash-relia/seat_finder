@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:seat_finder/views/home_page.dart';
+import 'package:seat_finder/views/homepage/UI/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Seat Finder',
       theme: ThemeData(
         useMaterial3: true,
+        colorScheme: const ColorScheme.light(primary: Colors.redAccent),
       ),
       home: const HomeScreen(seatCount: 20),
     );
