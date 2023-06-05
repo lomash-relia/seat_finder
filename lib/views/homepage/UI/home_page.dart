@@ -39,9 +39,17 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: BlocBuilder<HomeBloc, HomeState>(
+        child: BlocConsumer<HomeBloc, HomeState>(
           bloc: homeBloc,
+          listenWhen: (previous, current) => current is HomeActionState,
           buildWhen: (previous, current) => current is! HomeActionState,
+          listener: (context, state) {
+            if (state is HomeShowSnackBarState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Please Enter Valid Seat Number')),
+              );
+            }
+          },
           builder: (context, state) {
             switch (state.runtimeType) {
               case HomeLoadingState:
@@ -63,9 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           if (seatInputController.text.isNotEmpty) {
                             selectedSeat = int.parse(seatInputController.text);
-                            homeBloc.add(HomeSearchSeatEvent(
-                                selectedSeat: selectedSeat));
-                            seatInputController.clear();
+                            if (selectedSeat >= 0 && selectedSeat <= 72) {
+                              homeBloc.add(HomeSearchSeatEvent(
+                                  selectedSeat: selectedSeat));
+                            } else {
+                              homeBloc.add(HomeInvalidSeatEvent());
+                              seatInputController.clear();
+                            }
                           }
                         },
                         child: const Text('Find'),

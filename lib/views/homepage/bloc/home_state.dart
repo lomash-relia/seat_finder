@@ -19,3 +19,5 @@ class HomeErrorState extends HomeState {}
 
 //states to take action
 abstract class HomeActionState extends HomeState {}
+
+class HomeShowSnackBarState extends HomeActionState {}

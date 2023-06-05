@@ -11,6 +11,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<HomeInitialEvent>(homeInitialEvent);
     on<HomeSearchSeatEvent>(homeSearchSeatEvent);
+    on<HomeInvalidSeatEvent>(homeInvalidSeatEvent);
   }
 
   FutureOr<void> homeInitialEvent(
@@ -23,5 +24,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       HomeSearchSeatEvent event, Emitter<HomeState> emit) {
     emit(HomeLoadingState());
     emit(HomeLoadedState(selectedSeat: event.selectedSeat));
+  }
+
+  FutureOr<void> homeInvalidSeatEvent(
+      HomeInvalidSeatEvent event, Emitter<HomeState> emit) {
+    emit(HomeShowSnackBarState());
   }
 }

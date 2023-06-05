@@ -12,3 +12,5 @@ class HomeSearchSeatEvent extends HomeEvent {
 
   HomeSearchSeatEvent({required this.selectedSeat});
 }
+
+class HomeInvalidSeatEvent extends HomeEvent {}
