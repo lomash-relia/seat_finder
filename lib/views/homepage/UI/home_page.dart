@@ -39,11 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: BlocConsumer<HomeBloc, HomeState>(
+        child: BlocBuilder<HomeBloc, HomeState>(
           bloc: homeBloc,
-          listenWhen: (previous, current) => current is HomeActionState,
           buildWhen: (previous, current) => current is! HomeActionState,
-          listener: (context, state) {},
           builder: (context, state) {
             switch (state.runtimeType) {
               case HomeLoadingState:
